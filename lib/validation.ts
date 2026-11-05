@@ -1,0 +1,2 @@
+import { z } from 'zod';
+export const rsvpSchema=z.object({ name:z.string().trim().min(2).max(100), attendance:z.enum(['yes','no']), guests:z.number().int().min(1).max(10), events:z.array(z.enum(['wedding'])).max(1), dietary:z.string().max(500), message:z.string().max(1000), website:z.string().max(0) }).refine(v=>v.attendance==='no'||v.events.length>0,{message:'Please select at least one celebration.',path:['events']});
