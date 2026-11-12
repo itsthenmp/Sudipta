@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://itsthenmp.github.io/Sudipta/';
+const shareUrl = new URL('?v=20261112-1', siteUrl).toString();
 const previewImage = new URL('wedding-invite-preview-v2.png', siteUrl).toString();
 export const metadata: Metadata = {
  metadataBase: new URL(siteUrl),
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
  openGraph: {
   title: 'Wedding Invite | Sudipta & Nitesh',
   description: 'Join us for the wedding of Sudipta and Nitesh on 14 February 2027 at JMS Villa.',
-  url: siteUrl,
+  url: shareUrl,
   type: 'website',
   images: [{ url: previewImage, width: 1734, height: 907, alt: 'Wedding Invite' }],
  },
