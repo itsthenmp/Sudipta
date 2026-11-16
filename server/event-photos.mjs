@@ -80,9 +80,10 @@ export async function flattenPhotos(folder, children) {
 }
 
 export async function fetchOriginal(id, signal, range) {
-  const url = new URL('https://drive.google.com/uc');
+  const url = new URL('https://drive.usercontent.google.com/download');
   url.searchParams.set('export', 'download');
   url.searchParams.set('id', id);
+  url.searchParams.set('confirm', 't');
   const response = await fetch(url, { signal, headers: range ? { Range: range } : {} });
   const type = response.headers.get('content-type')?.split(';')[0];
   if (response.ok && response.body && (type?.startsWith('image/') || type === 'application/octet-stream')) return response;
@@ -160,9 +161,7 @@ export async function listEventPhotos(category, { ordered = true } = {}) {
 }
 
 export async function fetchEventThumbnail(id) {
-  const url = new URL('https://drive.google.com/thumbnail');
-  url.searchParams.set('id', id);
-  url.searchParams.set('sz', 'w800');
+  const url = `https://lh3.googleusercontent.com/d/${encodeURIComponent(id)}=w800`;
   const response = await fetch(url, { signal: AbortSignal.timeout(15000) });
   const type = response.headers.get('content-type')?.split(';')[0];
   if (response.ok && /^image\/(jpeg|png|webp|gif|avif)$/.test(type ?? '')) return response;
