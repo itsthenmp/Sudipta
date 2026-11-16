@@ -1,5 +1,18 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import EventPhotoGallery from './EventPhotoGallery';
+import styles from './event-photos.module.css';
+
+export const metadata: Metadata = { title: 'Event Photos' };
 
 export default function EventPhotosPage() {
-  return <main className="event-photos-coming"><div className="event-photos-panel"><span className="eyebrow">SUDIPTA &amp; NITESH</span><h1>Coming soon</h1><p>Our event photos will be here soon.</p><Link href="/">Back to the invitation</Link></div></main>;
+  return (
+    <main className={styles.gallery}>
+      <Link className={styles.back} href="/">← Back to the invitation</Link>
+      <header className={styles.header}>
+        <h1>Event Photos</h1>
+      </header>
+      <EventPhotoGallery only="wedding" />
+    </main>
+  );
 }

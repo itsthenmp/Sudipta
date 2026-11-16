@@ -1,1 +1,10 @@
-{"functions":{"api/*.ts":{"maxDuration":10}}}
+{
+  "functions": {
+    "api/*.ts": {
+      "maxDuration": 10
+    },
+    "api/event-photos.js": {
+      "maxDuration": 60
+    }
+  }
+}
