@@ -6,4 +6,6 @@ export function parseDriveLink(link: string): {kind:'file'|'folder';id:string}|n
   return id&&/^[\w-]+$/.test(id)?{kind:'file',id}:null;
  } catch { return null; }
 }
-export function drivePhotoUrl(id:string){return `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1600`}
+export function drivePhotoUrl(id: string) {
+  return `https://lh3.googleusercontent.com/d/${encodeURIComponent(id)}=w1600`;
+}

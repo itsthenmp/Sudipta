@@ -18,13 +18,60 @@ const contacts = [
  {name:'Partha Pratim Pyne', display:'+91 98743 94529', number:'919874394529'},
 ];
 function Photo({src, label, className=''}:{src:string;label:string;className?:string}) { return <div className={`photo ${className}`}>{src ? <Image src={`${base}${src}`} alt={label} fill sizes="(max-width: 600px) 90vw, 500px" style={{objectFit:'cover'}}/> : <div className="photo-placeholder"><span>YOUR PHOTOGRAPH HERE</span><small>Replace in the content configuration</small></div>}</div> }
-function HeroPhoto(){
- const [url,setUrl]=useState('');
- useEffect(()=>{let cancelled=false;
-  fetch(`${base}/drive-photos.json`,{cache:'no-store'}).then(response=>{if(!response.ok)throw new Error('Photo list unavailable');return response.json()}).then((data:{photos?:string[]})=>{const ids=(data.photos||[]).filter(id=>/^[\w-]+$/.test(id));if(!cancelled&&ids.length)setUrl(drivePhotoUrl(ids[Math.floor(Math.random()*ids.length)]))}).catch(()=>{});
-  return()=>{cancelled=true};
- },[]);
- return url?<div className="photo hero-photo"><Image src={url} alt="The couple" fill unoptimized sizes="(max-width: 600px) 90vw, 500px" style={{objectFit:'cover'}} onError={()=>setUrl('')}/></div>:<Photo src={wedding.photos.hero} label="The couple" className="hero-photo"/>;
+function HeroPhoto() {
+  const endpoint = process.env.NEXT_PUBLIC_HERO_PHOTO_ENDPOINT;
+  const [selection, setSelection] = useState<{ photo: string | null; fallback: string | null } | null>(null);
+  const [failedPhotos, setFailedPhotos] = useState<string[]>([]);
+
+  useEffect(() => {
+    const request = new AbortController();
+    const manifest = `${base}/hero-photo.json`;
+    const driveId = (value: unknown) =>
+      typeof value === 'string' && /^[\w-]+$/.test(value) ? value : null;
+
+    async function readSelection(url: string) {
+      const response = await fetch(url, { cache: 'no-store', signal: request.signal });
+      if (!response.ok) throw new Error('Welcome photo unavailable');
+      const { photo, fallback } = await response.json();
+      return { photo: driveId(photo), fallback: driveId(fallback) };
+    }
+
+    async function loadPhoto() {
+      try {
+        const result = endpoint
+          ? await readSelection(endpoint).catch(() => readSelection(manifest))
+          : await readSelection(manifest);
+        if (!request.signal.aborted) setSelection(result);
+      } catch {
+        if (!request.signal.aborted) setSelection({ photo: null, fallback: '1BTcdUFroSx60okFBMWQREu-KYcMmMQUe' });
+      }
+    }
+
+    void loadPhoto();
+    return () => request.abort();
+  }, [endpoint]);
+
+  if (!selection) return <div className="photo hero-photo" aria-hidden="true" />;
+
+  const photo = selection.photo && !failedPhotos.includes(selection.photo)
+    ? selection.photo
+    : selection.fallback;
+  if (!photo || failedPhotos.includes(photo)) {
+    return <Photo src={wedding.photos.hero} label="The couple" className="hero-photo" />;
+  }
+
+  return <div className="photo hero-photo">
+    <Image
+      key={photo}
+      src={drivePhotoUrl(photo)}
+      alt="The couple"
+      fill
+      unoptimized
+      sizes="(max-width: 600px) 90vw, 500px"
+      style={{ objectFit: 'cover' }}
+      onError={() => setFailedPhotos(previous => [...previous, photo])}
+    />
+  </div>;
 }
 function FootTrail(){return <svg className="trail-svg" aria-hidden="true"><defs><mask id="trail-content-mask" maskUnits="userSpaceOnUse"><rect className="trail-mask-base" fill="white"/><g className="trail-mask-cutouts"/></mask></defs><path className="trail-line" fill="none"/><g mask="url(#trail-content-mask)"><g className="trail-steps"/></g></svg>}
 function Flower(){return <svg className="flower" viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" strokeWidth=".8"><path d="M49 51C14 26 33 3 49 44C51 5 76 8 55 47C87 23 99 45 57 51C96 60 78 84 54 57C67 93 40 99 48 58C25 91 9 72 43 54C6 53 12 29 46 49Z"/><circle cx="51" cy="52" r="4"/><path d="M51 57C48 70 48 84 51 99"/></g></svg>}
