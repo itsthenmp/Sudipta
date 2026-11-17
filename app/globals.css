@@ -204,7 +204,7 @@ body .welcome-copy h1,body .welcome-copy h1 *,body .save-date-names,body .invita
 /* Fill the opening viewport with the original card and wooden backdrop. */
 .reference-opening{overflow:hidden}.reference-frame{width:max(100%,calc(100dvh * .7143));flex:none}
 
-.footer-credit{margin:18px auto 0;color:#efd2bb;font-size:12px;line-height:1.5;text-align:center}
+.footer-credit{margin:18px auto 0;color:#efd2bb;font-size:14px;line-height:1.5;text-align:center}
 
 /* A gentle cue points toward the attire tab. */
 .outfit-tap-hint{position:fixed;z-index:12;top:calc(42% - 33px);right:max(16px,calc((100vw - 540px)/2 + 16px));color:#ffe4c6;font-family:system-ui,sans-serif!important;font-size:27px;line-height:1;pointer-events:none;filter:drop-shadow(0 2px 3px #1b0d16);animation:outfit-tap 1.5s ease-in-out infinite;transform-origin:center bottom}.outfit-tap-hint.hidden{display:none}@keyframes outfit-tap{0%,100%{transform:translateY(-5px) rotate(-12deg)}45%,60%{transform:translateY(3px) rotate(-12deg)}}@media(prefers-reduced-motion:reduce){.outfit-tap-hint{animation:none}}
