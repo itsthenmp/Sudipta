@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Invitation from '@/components/Invitation';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://itsthenmp.github.io/Sudipta/';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || new URL(`${process.env.NEXT_PUBLIC_BASE_PATH || '/Wedding-Invite'}/`, 'https://itsthenmp.github.io').toString();
 const pageUrl = new URL('wedding-invite/', siteUrl).toString();
 const previewImage = new URL('wedding-invite-preview-v3.png', siteUrl).toString();
 const title = 'Wedding Invite | Sudipta & Nitesh';

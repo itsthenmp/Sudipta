@@ -29,7 +29,7 @@ jobs:
       - run: npm test
       - run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ vars.NEXT_PUBLIC_BASE_PATH || '/Sudipta' }}
+          NEXT_PUBLIC_BASE_PATH: ${{ format('/{0}', github.event.repository.name) }}
           NEXT_PUBLIC_HERO_PHOTO_ENDPOINT: ${{ vars.NEXT_PUBLIC_HERO_PHOTO_ENDPOINT }}
           NEXT_PUBLIC_EVENT_PHOTOS_ENDPOINT: ${{ vars.NEXT_PUBLIC_EVENT_PHOTOS_ENDPOINT }}
           NEXT_PUBLIC_RSVP_ENDPOINT: ${{ vars.NEXT_PUBLIC_RSVP_ENDPOINT }}

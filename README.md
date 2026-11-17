@@ -8,6 +8,6 @@ Install dependencies with `npm install`, then run `npm run dev`. Use `npm test` 
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/deploy.yml` builds the static site with the `/Sudipta` base path and deploys it to GitHub Pages. In repository settings, select GitHub Actions as the Pages source.
+The workflow in `.github/workflows/deploy.yml` builds the static site with a base path derived from the repository name and deploys it to GitHub Pages. In repository settings, select GitHub Actions as the Pages source.
 
 The opening photo is loaded from a public Drive folder; run `python3 scripts/sync-drive-photos.py` locally to refresh its checked-in photo list before deployment.

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-const siteUrl = 'https://itsthenmp.github.io/Sudipta/';
+const siteUrl = new URL(`${process.env.NEXT_PUBLIC_BASE_PATH || '/Wedding-Invite'}/`, 'https://itsthenmp.github.io').toString();
 const title = 'Wedding Invite | Sudipta & Nitesh';
 const description = 'Join us for the wedding of Sudipta and Nitesh on 14 February 2027 at JMS Villa.';
 const shareImage = new URL('photos/wedding-invite-share-v4.jpg', siteUrl).toString();
