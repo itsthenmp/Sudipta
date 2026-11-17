@@ -320,3 +320,30 @@ body .welcome-introduction .welcome-events {
   line-height: 1.25;
   text-transform: none;
 }
+
+.story .section-heading h2,
+.story .section-heading h2.story-title {
+  font-size: 0;
+  line-height: 0;
+}
+
+.story .section-heading h2 > * {
+  display: none;
+}
+
+.story .section-heading h2::before,
+.story .section-heading h2::after {
+  display: block;
+  font-size: clamp(30px, 9vw, 64px);
+  line-height: 1.14;
+}
+
+.story .section-heading h2::before {
+  content: 'Not Alike,';
+}
+
+.story .section-heading h2::after {
+  content: 'Yet Aligned';
+  color: #e0a3a0;
+  font-style: italic;
+}
