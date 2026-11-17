@@ -5,7 +5,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || new URL(`${process.env.NEXT_
 const pageUrl = new URL('wedding-invite/', siteUrl).toString();
 const previewImage = new URL('wedding-invite-preview-v3.png', siteUrl).toString();
 const title = 'Wedding Invite | Sudipta & Nitesh';
-const description = 'Join us for the wedding of Sudipta and Nitesh on 14 February 2027 at JMS Villa.';
+const description = 'You’re warmly invited to celebrate the wedding of Sudipta and Nitesh.';
 
 export const metadata: Metadata = {
  title,
