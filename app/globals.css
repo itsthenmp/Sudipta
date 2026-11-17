@@ -153,7 +153,7 @@ body :where(.sheet > p,.small-note){color:#e5cec5!important}
 .scratch-popup .scratch-reveal{color:#f8e9df}
 .topline .monogram-image{filter:sepia(.3) saturate(.75) hue-rotate(-38deg) brightness(1.05) drop-shadow(0 3px 3px #08020599)}
 .hero-caption{position:relative;display:flex;justify-content:center;align-items:center;min-height:38px;margin-top:8px;color:#f3d4ca}
-body .hero-caption span:first-child{font-family:'Sephora Hayden','Great Vibes',cursive!important;text-transform:none;font-size:clamp(22px,6vw,30px);letter-spacing:0;font-weight:400!important;line-height:1.2;text-align:center}
+body .hero-caption span:first-child{font-family:'Sephora Hayden','Great Vibes',cursive!important;text-transform:none;font-size:clamp(24px,calc(6vw + 2px),32px);letter-spacing:0;font-weight:400!important;line-height:1.2;text-align:center}
 .hero-caption span:last-child{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:8px;letter-spacing:.12em;color:#dfb7a8}
 .section-index{justify-content:center;gap:16px;text-align:center;font-size:13px;letter-spacing:.2em}
 
@@ -161,7 +161,7 @@ body .hero-caption span:first-child{font-family:'Sephora Hayden','Great Vibes',c
 .invitation-reveal{background:#6b1629;color:#fff7ed;border:1px solid #fff5e7;box-shadow:0 10px 35px #100007a6}
 .invitation-reveal:before{content:'';position:absolute;inset:6px;pointer-events:none;border:12px solid transparent;border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23fff8ef' stroke-width='2'%3E%3Crect x='6' y='6' width='88' height='88'/%3E%3Crect x='12' y='12' width='76' height='76'/%3E%3Cpath d='M2 31 C4 22 14 20 18 27 C22 33 19 41 13 43 C7 45 5 38 10 36 C14 34 15 39 12 40 M69 2 C78 4 80 14 73 18 C67 22 59 19 57 13 C55 7 62 5 64 10 C66 14 61 15 60 12 M98 69 C96 78 86 80 82 73 C78 67 81 59 87 57 C93 55 95 62 90 64 C86 66 85 61 88 60 M31 98 C22 96 20 86 27 82 C33 78 41 81 43 87 C45 93 38 95 36 90 C34 86 39 85 40 88'/%3E%3Ccircle cx='22' cy='22' r='3'/%3E%3Ccircle cx='78' cy='22' r='3'/%3E%3Ccircle cx='22' cy='78' r='3'/%3E%3Ccircle cx='78' cy='78' r='3'/%3E%3C/g%3E%3C/svg%3E");border-image-slice:32;border-image-repeat:round;opacity:.95}
 .invitation-reveal span,.invitation-reveal strong,.invitation-reveal small{position:relative;z-index:1;color:#fff7ed}
-@media(max-width:375px){.hero-caption span:last-child{position:static;transform:none;margin-left:8px}.hero-caption{gap:4px}.hero-caption span:first-child{font-size:22px!important}}
+@media(max-width:375px){.hero-caption span:last-child{position:static;transform:none;margin-left:8px}.hero-caption{gap:4px}.hero-caption span:first-child{font-size:24px!important}}
 
 /* Warm yellow footsteps stand out against the evening palette. */
 .trail-line{stroke:#edc75a;opacity:.42}.trail-step{fill:#edc75a}.trail-cursor{fill:#ffe39a}
@@ -172,8 +172,8 @@ body .hero-caption span:first-child{font-family:'Sephora Hayden','Great Vibes',c
 body .event-content h3.event-title{font-size:clamp(40px,10.5vw,54px)}
 .event-details{font-size:13px}
 .event-actions a,.event-actions button{font-size:11px}
-body .hero-caption span:first-child{font-size:clamp(20px,5.5vw,28px)}
-@media(max-width:375px){body .hero-caption span:first-child{font-size:20px!important}}
+body .hero-caption span:first-child{font-size:clamp(22px,calc(5.5vw + 2px),30px)}
+@media(max-width:375px){body .hero-caption span:first-child{font-size:22px!important}}
 
 /* Keep the opening-card names and invitation copy clear of the ornament. */
 .invitation-reveal{padding:0 20px;gap:14px}
@@ -267,7 +267,7 @@ body .comic-caption h3{font-family:'Cormorant Garamond',Georgia,serif!important;
 
 /* Baltime script and rose-gold lettering echo the NS monogram. */
 @font-face{font-family:'Baltime';src:url('../public/fonts/Baltime.ttf') format('truetype');font-display:swap;font-style:normal;font-weight:400}
-body .welcome-introduction .welcome-events{font-family:'Baltime','Cormorant Garamond',cursive!important;font-weight:400;font-size:clamp(52px,13vw,72px);line-height:1.25;text-transform:none!important;letter-spacing:0;background:linear-gradient(115deg,#ffe4d5 5%,#d9847d 34%,#ffd8bd 54%,#b86972 76%,#f8c7aa 94%);background-clip:text;-webkit-background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 2px #10060b99)}
+body .welcome-introduction .welcome-events{font-family:'Baltime','Cormorant Garamond',cursive!important;font-weight:400;font-size:clamp(52px,13vw,72px);line-height:1.25;text-transform:none!important;letter-spacing:0}
 
 .floating-nav-group {
   position: fixed;
@@ -292,4 +292,12 @@ body .welcome-introduction .welcome-events{font-family:'Baltime','Cormorant Gara
   line-height: 1.2;
   text-align: center;
   text-shadow: 0 1px 3px #140d0a, 0 0 5px #140d0a;
+}
+
+body .welcome-introduction .welcome-events {
+  background: linear-gradient(115deg, #ffe4d5 5%, #d9847d 34%, #ffd8bd 54%, #b86972 76%, #f8c7aa 94%);
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 2px #10060b99);
 }
